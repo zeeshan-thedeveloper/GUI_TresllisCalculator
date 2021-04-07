@@ -15,6 +15,24 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 
 public class GUIController implements Initializable{
+	
+	
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) 
+	{
+		
+		// TODO Auto-generated method stub
+		comboBox_support.setItems(FXCollections.observableArrayList(
+			    new Support_Type("Pas de support"),
+			    new Support_Type("Support unique"), 
+			    new Support_Type("Double soutien")));
+		comboBox_support.valueProperty().addListener((obs, oldVal, newVal) -> 
+			    selectedChoice =  newVal.getType());
+	}
+	
+	// Variables and code for NODE Segment.
+	
+	
 	private static String selectedChoice;
 	@FXML
 	TextField identificationN;
@@ -29,19 +47,22 @@ public class GUIController implements Initializable{
 	@FXML
 	ListView<Node_DataHolder> node_list;
 	
+	
+	
+	@FXML
 	public void create_node() {
 	
-		int choice =0;
+		int choice =-1;
 		if(selectedChoice.equals("Support unique"))
 		{
-			choice=1;
+			choice=0;
 		}
 		else if(selectedChoice.equals("Double soutien"))
 		{
-			choice=2;
+			choice=1;
 		}
 		else {
-			choice =3;
+			choice =2;
 		}
 		
 		//This method will create an object will store in the list.
@@ -50,17 +71,24 @@ public class GUIController implements Initializable{
 	}
 	
 	
+	//Code and variables for Point segment.
 	
-	@Override
-	public void initialize(URL arg0, ResourceBundle arg1) {
-		// TODO Auto-generated method stub
-		comboBox_support.setItems(FXCollections.observableArrayList(
-			    new Support_Type("Pas de support"),
-			    new Support_Type("Support unique"), 
-			    new Support_Type("Double soutien")));
-		comboBox_support.valueProperty().addListener((obs, oldVal, newVal) -> 
-			    selectedChoice =  newVal.getType());
+	@FXML
+	TextField txt_point_abscisse;
+	@FXML
+	TextField txt_point_ordonne;
+	@FXML
+	Button create_point_btn;
+	@FXML
+	ListView<Point_DataHolder> points_list;
+	
+	
+	@FXML 
+	public void create_point()
+	{
+		points_list.getItems().add(new Point_DataHolder(txt_point_abscisse.getText(),txt_point_ordonne.getText()));
 	}
+
 	
 	
 	
@@ -128,11 +156,11 @@ class Node_DataHolder
 	public String toString() {
 		// TODO Auto-generated method stub
 		String ty = "";
-		if(type_support==1)
+		if(type_support==0)
 		{
 			ty="Support unique";
 		}
-		else if(type_support==2)
+		else if(type_support==1)
 		{
 			ty="Double soutien";
 		}
@@ -144,5 +172,34 @@ class Node_DataHolder
 		return identificationN+" | x :"+txt_abscisse+" | y :"+txt_ordonne+" | type : "+ty; 
 	}
 	
+	
+}
+
+class Point_DataHolder
+{
+	String i,j;
+	public Point_DataHolder(String i,String j) {
+		// TODO Auto-generated constructor stub
+		this.i=i;
+		this.j=j;
+	}
+	public String getI() {
+		return i;
+	}
+	public void setI(String i) {
+		this.i = i;
+	}
+	public String getJ() {
+		return j;
+	}
+	public void setJ(String j) {
+		this.j = j;
+	}
+	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return " P "+" with i: "+i+" and j:"+j ;
+	}
 	
 }

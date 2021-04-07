@@ -8,9 +8,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="678.0" prefWidth="614.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.GUIController">
+<AnchorPane prefHeight="678.0" prefWidth="865.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.GUIController">
    <children>
-      <Label layoutX="109.0" layoutY="52.0" text="Ajouter des nœuds">
+      <Label layoutX="31.0" layoutY="55.0" text="Ajouter des nœuds de treillis">
          <font>
             <Font name="System Bold Italic" size="24.0" />
          </font>
@@ -33,7 +33,7 @@
             <Font size="16.0" />
          </font>
       </Label>
-      <Button fx:id="openFileExploral" layoutX="128.0" layoutY="327.0" mnemonicParsing="false" onAction="#create_node" text="Créer et ajouter" />
+      <Button fx:id="openFileExploral" layoutX="128.0" layoutY="327.0" mnemonicParsing="false" onAction="#create_node" prefHeight="35.0" prefWidth="109.0" text="Créer et ajouter" />
       <Label layoutX="64.0" layoutY="276.0" text="type et support">
          <font>
             <Font size="16.0" />
@@ -46,5 +46,34 @@
             <Font size="16.0" />
          </font>
       </Label>
+      <Label layoutX="397.0" layoutY="55.0" text="Ajouter des nœuds de terrain">
+         <font>
+            <Font name="System Bold Italic" size="24.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txt_point_abscisse" layoutX="510.0" layoutY="165.0" prefHeight="25.0" prefWidth="192.0" />
+      <TextField fx:id="txt_point_ordonne" layoutX="510.0" layoutY="222.0" prefHeight="25.0" prefWidth="192.0" />
+      <Label layoutX="397.0" layoutY="222.0" text="ordonnée(J)">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="397.0" layoutY="165.0" text="abscisse (I)">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="191.0" layoutY="20.0" text="S">
+         <font>
+            <Font name="System Bold Italic" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="540.0" layoutY="20.0" text="P">
+         <font>
+            <Font name="System Bold Italic" size="24.0" />
+         </font>
+      </Label>
+      <Button fx:id="create_point_btn" layoutX="505.0" layoutY="327.0" mnemonicParsing="false" onAction="#create_point" prefHeight="35.0" prefWidth="109.0" text="créer un point" />
+      <ListView fx:id="points_list" layoutX="423.0" layoutY="421.0" prefHeight="198.0" prefWidth="251.0" />
    </children>
 </AnchorPane>
