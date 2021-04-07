@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="678.0" prefWidth="520.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.GUIController">
+<AnchorPane prefHeight="678.0" prefWidth="614.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.GUIController">
    <children>
       <Label layoutX="109.0" layoutY="52.0" text="Ajouter des nœuds">
          <font>
@@ -33,13 +33,13 @@
             <Font size="16.0" />
          </font>
       </Label>
-      <Button fx:id="openFileExploral" layoutX="128.0" layoutY="327.0" mnemonicParsing="false" onAction="#test" text="Créer et ajouter" />
+      <Button fx:id="openFileExploral" layoutX="128.0" layoutY="327.0" mnemonicParsing="false" onAction="#create_node" text="Créer et ajouter" />
       <Label layoutX="64.0" layoutY="276.0" text="type et support">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <ListView layoutX="52.0" layoutY="421.0" prefHeight="198.0" prefWidth="251.0" />
+      <ListView fx:id="node_list" layoutX="52.0" layoutY="421.0" prefHeight="198.0" prefWidth="251.0" />
       <ComboBox fx:id="comboBox_support" layoutX="191.0" layoutY="276.0" prefHeight="28.0" prefWidth="93.0" promptText="Type" />
       <Label layoutX="52.0" layoutY="378.0" text="Liste des nœuds">
          <font>
