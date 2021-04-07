@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="678.0" prefWidth="865.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.GUIController">
+<AnchorPane prefHeight="678.0" prefWidth="1338.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.GUIController">
    <children>
       <Label layoutX="31.0" layoutY="55.0" text="Ajouter des nœuds de treillis">
          <font>
@@ -39,26 +39,26 @@
             <Font size="16.0" />
          </font>
       </Label>
-      <ListView fx:id="node_list" layoutX="52.0" layoutY="421.0" prefHeight="198.0" prefWidth="251.0" />
+      <ListView fx:id="node_list" layoutX="51.0" layoutY="452.0" prefHeight="198.0" prefWidth="273.0" />
       <ComboBox fx:id="comboBox_support" layoutX="191.0" layoutY="276.0" prefHeight="28.0" prefWidth="93.0" promptText="Type" />
-      <Label layoutX="52.0" layoutY="378.0" text="Liste des nœuds">
+      <Label layoutX="51.0" layoutY="409.0" text="Liste des points pour le triangle (Trelis)">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <Label layoutX="397.0" layoutY="55.0" text="Ajouter des nœuds de terrain">
+      <Label layoutX="372.0" layoutY="56.0" text="Ajouter des nœuds de terrain">
          <font>
             <Font name="System Bold Italic" size="24.0" />
          </font>
       </Label>
-      <TextField fx:id="txt_point_abscisse" layoutX="510.0" layoutY="165.0" prefHeight="25.0" prefWidth="192.0" />
-      <TextField fx:id="txt_point_ordonne" layoutX="510.0" layoutY="222.0" prefHeight="25.0" prefWidth="192.0" />
-      <Label layoutX="397.0" layoutY="222.0" text="ordonnée(J)">
+      <TextField fx:id="txt_point_abscisse" layoutX="485.0" layoutY="166.0" prefHeight="25.0" prefWidth="192.0" />
+      <TextField fx:id="txt_point_ordonne" layoutX="485.0" layoutY="223.0" prefHeight="25.0" prefWidth="192.0" />
+      <Label layoutX="372.0" layoutY="223.0" text="ordonnée(J)">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <Label layoutX="397.0" layoutY="165.0" text="abscisse (I)">
+      <Label layoutX="372.0" layoutY="166.0" text="abscisse (I)">
          <font>
             <Font size="16.0" />
          </font>
@@ -68,12 +68,73 @@
             <Font name="System Bold Italic" size="24.0" />
          </font>
       </Label>
-      <Label layoutX="540.0" layoutY="20.0" text="P">
+      <Label layoutX="515.0" layoutY="21.0" text="P">
          <font>
             <Font name="System Bold Italic" size="24.0" />
          </font>
       </Label>
-      <Button fx:id="create_point_btn" layoutX="505.0" layoutY="327.0" mnemonicParsing="false" onAction="#create_point" prefHeight="35.0" prefWidth="109.0" text="créer un point" />
-      <ListView fx:id="points_list" layoutX="423.0" layoutY="421.0" prefHeight="198.0" prefWidth="251.0" />
+      <Button fx:id="create_point_btn" layoutX="480.0" layoutY="328.0" mnemonicParsing="false" onAction="#create_point" prefHeight="35.0" prefWidth="109.0" text="créer un point" />
+      <ListView fx:id="points_list" layoutX="397.0" layoutY="453.0" prefHeight="198.0" prefWidth="251.0" />
+      <Label layoutX="397.0" layoutY="410.0" text="Liste des points pour le terrain">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="814.0" layoutY="18.0" text="Bars / Sements">
+         <font>
+            <Font name="System Bold Italic" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="779.0" layoutY="59.0" text="Configurer les nœuds">
+         <font>
+            <Font name="System Bold Italic" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="740.0" layoutY="157.0" text="Nœud de départ">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="comboStartingNode" layoutX="739.0" layoutY="194.0" prefWidth="150.0" promptText="Select" />
+      <Label layoutX="899.0" layoutY="157.0" text="Nœud de fin">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="comboEndingNode" layoutX="899.0" layoutY="194.0" prefWidth="150.0" promptText="Select" />
+      <TextField fx:id="material" layoutX="848.0" layoutY="239.0" prefHeight="25.0" prefWidth="192.0" />
+      <Label layoutX="744.0" layoutY="239.0" text="matérielle">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <TextField fx:id="identificationB" layoutX="848.0" layoutY="282.0" prefHeight="25.0" prefWidth="192.0" />
+      <Label layoutX="748.0" layoutY="280.0" text="identification">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Button fx:id="create_point_btn1" layoutX="817.0" layoutY="385.0" mnemonicParsing="false" onAction="#create_bar" prefHeight="28.0" prefWidth="109.0" text="Créer une barre" />
+      <ListView fx:id="bar_list" layoutX="746.0" layoutY="463.0" prefHeight="198.0" prefWidth="251.0" />
+      <Label layoutX="747.0" layoutY="426.0" text="Liste des bars">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="748.0" layoutY="336.0" text="Min">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <TextField fx:id="min_bar" layoutX="793.0" layoutY="336.0" prefHeight="25.0" prefWidth="84.0" />
+      <TextField fx:id="max_bar" layoutX="955.0" layoutY="336.0" prefHeight="25.0" prefWidth="84.0" />
+      <Label layoutX="912.0" layoutY="336.0" text="Max">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Button layoutX="1119.0" layoutY="136.0" mnemonicParsing="false" onAction="#openFile" prefHeight="79.0" prefWidth="180.0" text="Fichier ouvert" />
+      <Button layoutX="1119.0" layoutY="300.0" mnemonicParsing="false" onAction="#saveSolutionFile" prefHeight="79.0" prefWidth="180.0" text="Enregistrer le fichier d'entrée" />
+      <Button layoutX="1119.0" layoutY="473.0" mnemonicParsing="false" onAction="#solve" prefHeight="79.0" prefWidth="180.0" text="Résoudre" />
    </children>
 </AnchorPane>
