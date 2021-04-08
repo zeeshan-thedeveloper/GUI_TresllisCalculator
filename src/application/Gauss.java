@@ -1,5 +1,6 @@
 package application;
 
+
 public class Gauss {
 	Gauss(){
 		
@@ -7,11 +8,256 @@ public class Gauss {
 	static void Create_Equations() {
 		
 	}
-	static void Create_Node_and_Bars(Meta_Data_Holder obj) {
+	static double[][] Create_Matrix_Of_Equation(Meta_Data_Holder data_Holder) {
 		
+		System.out.println("Creating nodes and bars ");
+		// Here we will access node and the will check which type of node is this.
+		
+		// here we will check no of nodes first with respect to factor 3. 
+		
+		double[][] result = null;
+		
+		
+		System.out.println("length is : "+data_Holder.getNode_Data().length);
+		
+		if(data_Holder.getNode_Data().length==3)
+		{
+			result = new double[6][6];
+			System.out.println("when length is 3");
+			int index=0;
+			for(Node support : data_Holder.getNode_Data())
+			{
+				if(support.getTypeSupport()==0)
+				{
+					System.out.println("when support 1");
+					
+					/*
+					 * R : 1
+					 *  0 : cos(45). : T1
+					 *  1 : 0 : T2
+					 *  2 : 0 Rx:  T3
+					 *  
+					 * R : 2
+					 *  0 : cos(-45) : T1
+					 *  1 : 0 : T2
+					 *  2 : R T3
+					 * */
+					
+					
+					//Single support
+					
+					//Row 1 fo s1
+					
+					result[index][0] = Math.sqrt(2)/2;
+					result[index][1] = 0.0;
+					result[index][2] = 0.0;
+				
+					
+					//Row 2 fo s1
+					
+					index++;
+					result[index][0] = (Math.sqrt(2)/2)*(-1);
+					result[index][1] = 0.0;
+					result[index][2] = -1.0;
+					
+					index++;
+					
+					
+					
+				}
+				else if(support.getTypeSupport()==1)
+				{
+					// Double  support
+					/*
+					 * R : 1
+					 *  0 : cos(3pi/4). : T1
+					 *  1 : cos(-3pi/4) : T2
+					 *  2 : 0 px:  T3
+					 *  
+					 * R : 2
+					 *  0 : sin(3pi/4) : T1
+					 *  1 : sin(-3pi/4) : T2
+					 *  2 : px :  T3
+					 * */
+					
+					System.out.println("when support 1");
+					
+					
+					//Row 1 fo s1
+					
+					result[index][0] = (Math.sqrt(2)/2)*(-1);
+					result[index][1] = (Math.sqrt(2)/2)*(-1);
+					result[index][2] = 0.0;
+				
+					
+					//Row 2 fo s1
+					
+					index++;
+					result[index][0] = (Math.sqrt(2)/2)*(1);
+					result[index][1] = (Math.sqrt(2)/2)*(-1);
+					result[index][2] = 0.0;
+					
+					index++;
+					
+				}
+				else 
+				{
+					//No support
+				}
+					
+			}
+			
+			result[0][3]=1;
+			result[0][4]=0;
+			result[0][5]=0;
+			
+			result[1][3]=0;
+			result[1][4]=1;
+			result[1][5]=0;
+			
+			result[2][3]=0;
+			result[2][4]=0;
+			result[2][5]=1;
+			
+			result[3][3]=0;
+			result[3][4]=0;
+			result[3][5]=0;
+			
+			result[4][3]=0;
+			result[4][4]=0;
+			result[4][5]=0;
+			
+			result[5][3]=0;
+			result[5][4]=0;
+			result[5][5]=0;
+			
+			
+			
+			
+		}
+		else if(data_Holder.getNode_Data().length==6)
+		{
+			result = new double[12][12];
+			
+			for(Node support : data_Holder.getNode_Data())
+			{
+				if(support.getTypeSupport()==0)
+				{
+					//Single support
+				}
+				else if(support.getTypeSupport()==1)
+				{
+					// Double  support
+				}
+				else 
+				{
+					//No support
+				}
+					
+			}
+		}
+		
+		
+		
+		
+		
+		return result;
 	}
 
+	static double[] Create_Matrix_B(Meta_Data_Holder data_Holder) {
+		
+		double[] B = null;
+		
+		double[] p_value = calculatePx(data_Holder);
+		
+		double px = p_value[0];
+		double py = p_value[1];
+		
+		
+		if(data_Holder.getNode_Data().length==3)
+		{
+			B = new double[6];
+			
+			int index=0;
+			
+			for(Node support : data_Holder.getNode_Data())
+			{
+				if(support.getTypeSupport()==0)
+				{
+				
+					//single support
+					B[index]=0;
+					
+					index++;
+					
+					B[index]=0;
+					
+					index++;
+					
+				}
+				else if(support.getTypeSupport()==1)
+				{
+					// Double  support
+					B[index]=px*(-1);
+					
+					index++;
+					
+					B[index]=(py)*(-1);
+					
+					index++;
+					
+					
+				}
+				else 
+				{
+					//No support
+				}
+					
+			}
+			
+			
+			
+			
+			
+		}
+		else if(data_Holder.getNode_Data().length==6)
+		{
+			B = new double[12];
+			
+			for(Node support : data_Holder.getNode_Data())
+			{
+				if(support.getTypeSupport()==0)
+				{
+					//Single support
+				}
+				else if(support.getTypeSupport()==1)
+				{
+					// Double  support
+				}
+				else 
+				{
+					//No support
+				}
+					
+			}
+		}
+		
 
+		
+		
+		return B;		
+	}
+	
+	
+	static double[] calculatePx(Meta_Data_Holder obj)
+	{
+		double[] p_values = new double[2];
+		
+		p_values[0]=0.0F;//x
+		p_values[0]=(1000.0F); //y
+		
+		return p_values;
+	}
 	static void finalAnswerCalculator(double Matrix1[][], double Matrix2[][]){
 	
 	        double inverted_matrix1[][] = invert(Matrix1);
@@ -59,6 +305,7 @@ public class Gauss {
 	                System.out.print("\n");
 	             }
 
+	             
 	        
 	        
 	    

@@ -25,4 +25,29 @@ public class Node {
         this.identificationN = "Unidentified";
         this.typeSupport = 0;
     }
+	public Double getAbscissa() {
+		return abscissa;
+	}
+	public void setAbscissa(Double abscissa) {
+		this.abscissa = abscissa;
+	}
+	public Double getOrdinate() {
+		return ordinate;
+	}
+	public void setOrdinate(Double ordinate) {
+		this.ordinate = ordinate;
+	}
+	public int getTypeSupport() {
+		return typeSupport;
+	}
+	public void setTypeSupport(int typeSupport) {
+		this.typeSupport = typeSupport;
+	}
+	public String getIdentificationN() {
+		return identificationN;
+	}
+	public void setIdentificationN(String identificationN) {
+		this.identificationN = identificationN;
+	}
+    
 }

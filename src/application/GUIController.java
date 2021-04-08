@@ -149,7 +149,7 @@ public class GUIController implements Initializable{
 		// TODO Auto-generated method stub
 		Trellis trellis_Data1[] = new Trellis[2];
 		Terrain terrain_Data1[]= new Terrain[1];
-		Node node_Data1[]= new Node[30];
+		Node node_Data1[]= new Node[node_list.getItems().size()];
 		Bar bar_Data1[]= new Bar[12];
 		Hand hand_Data1[]=new Hand[1];
 		
@@ -249,14 +249,60 @@ public class GUIController implements Initializable{
 	Matrix.meta_Data_Holder.setNode_Data(node_Data1);
 	Matrix.meta_Data_Holder.setBar_Data(bar_Data1);
 	Matrix.meta_Data_Holder.setHand_Data(hand_Data1);
+	Matrix.meta_Data_Holder.setPoint_Data(point_Data);
+
 	
-	System.out.println("BAR  "+Matrix.meta_Data_Holder.getBar_Data()[0].starting_node.identificationN);
-	
+	double Matrix1[][];
+	double Matrix2[][]=null;
+	System.out.println("length is : "+Matrix.meta_Data_Holder.getNode_Data().length);
+ 	Matrix1 = Gauss.Create_Matrix_Of_Equation(Matrix.meta_Data_Holder);
+ 	
+ 	if(Matrix.meta_Data_Holder.getNode_Data().length==3)
+ 	{
+ 		Matrix2 = new double[6][1];
+ 		double[] temp= Gauss.Create_Matrix_B(Matrix.meta_Data_Holder);
+ 		int index=0;
+ 		for(double d :  temp)
+ 		{
+ 			Matrix2[index][0]=d;
+ 
+ 			index++;
+ 		}
+ 	}
+ 	else if(Matrix.meta_Data_Holder.getNode_Data().length==6)
+ 	{
+
+ 		Matrix2 = new double[12][1];
+		double[] temp= Gauss.Create_Matrix_B(Matrix.meta_Data_Holder);
+ 		int index=0;
+ 		for(double d :  temp)
+ 		{
+ 			Matrix2[index][0]=d;
+ 
+ 			index++;
+ 		}
+ 	}
+ 	
+ 	
+ 	System.out.println("L :M1 "+Matrix1.length+" - "+Matrix1[0].length);
+ 	System.out.println("L :M2 "+Matrix2.length+" - "+Matrix2[0].length);
+ 	
+ 	System.out.println("Value of m1");
+ 	for(int i=0;i<Matrix1.length;i++)
+ 	{
+ 		for(int j=0;j<Matrix1[i].length;j++)
+ 		{
+ 			System.out.print(Matrix1[i][j]+"  ");
+ 			
+ 		}
+ 		
+ 		System.out.println();
+ 		
+ 	}
+ 	
+ 	Gauss.finalAnswerCalculator(Matrix1, Matrix2);
 	}
-	
-	
-	
-	
+		
 }
 
 class Support_Type

@@ -6,6 +6,7 @@ public class Meta_Data_Holder {
 	Node node_Data[];
 	Bar bar_Data[];
 	Hand hand_Data[];
+	Points [] point_Data;
 	Meta_Data_Holder(){
 		
 		//Here we will define max number of 
@@ -111,6 +112,15 @@ public class Meta_Data_Holder {
 		*/
 		
 	}
+	
+	public Points[] getPoint_Data() {
+		return point_Data;
+	}
+
+	public void setPoint_Data(Points[] point_Data) {
+		this.point_Data = point_Data;
+	}
+
 	public Trellis[] getTrellis_Data() {
 		return trellis_Data;
 	}
