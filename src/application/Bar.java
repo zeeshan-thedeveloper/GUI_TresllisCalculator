@@ -27,6 +27,39 @@ public static String idb (int numb) {
     return (idb);
 }
 
+public Node getStarting_node() {
+	return starting_node;
+}
+
+public void setStarting_node(Node starting_node) {
+	this.starting_node = starting_node;
+}
+
+public Node getEnd_node() {
+	return end_node;
+}
+
+public void setEnd_node(Node end_node) {
+	this.end_node = end_node;
+}
+
+public int getMaterial() {
+	return material;
+}
+
+public void setMaterial(int material) {
+	this.material = material;
+}
+
+public String getIdentificationB() {
+	return identificationB;
+}
+
+public void setIdentificationB(String identificationB) {
+	this.identificationB = identificationB;
+}
+
+
 /* TEST Print Node
 Double a = 3.0;
 String name = "test";

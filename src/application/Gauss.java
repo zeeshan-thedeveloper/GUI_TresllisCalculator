@@ -1,5 +1,8 @@
 package application;
 
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.PrintStream;
 
 public class Gauss {
 	Gauss(){
@@ -23,13 +26,13 @@ public class Gauss {
 		if(data_Holder.getNode_Data().length==3)
 		{
 			result = new double[6][6];
-			System.out.println("when length is 3");
+			//System.out.println("when length is 3");
 			int index=0;
 			for(Node support : data_Holder.getNode_Data())
 			{
 				if(support.getTypeSupport()==0)
 				{
-					System.out.println("when support 1");
+				//	System.out.println("when support 1");
 					
 					/*
 					 * R : 1
@@ -80,7 +83,7 @@ public class Gauss {
 					 *  2 : px :  T3
 					 * */
 					
-					System.out.println("when support 1");
+				//	System.out.println("when support 1");
 					
 					
 					//Row 1 fo s1
@@ -174,6 +177,7 @@ public class Gauss {
 		double py = p_value[1];
 		
 		
+		
 		if(data_Holder.getNode_Data().length==3)
 		{
 			B = new double[6];
@@ -261,6 +265,76 @@ public class Gauss {
 	static void finalAnswerCalculator(double Matrix1[][], double Matrix2[][]){
 	
 	        double inverted_matrix1[][] = invert(Matrix1);
+	        PrintStream output = null;
+			try {
+				output = new PrintStream("C:\\Users\\HP\\Desktop\\AutoGenrateResultFile.txt");
+				 output.print("Données de la matrice 1 (A) \n");
+			} catch (FileNotFoundException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			System.out.println("Données de la matrice 1 (A)");
+			
+			//matrix 1 // writing
+	        for(int i=0;i<inverted_matrix1.length;i++) {
+	        	  
+	        	for(int j=0;j<inverted_matrix1[i].length;j++)
+	        	{
+	        		try {
+	                    System.out.print(inverted_matrix1[i][j]+" "); 
+	                    output.print(inverted_matrix1[i][j]+"\t");
+	                   
+	                }
+	                catch(Exception e) {
+	                    e.getStackTrace();
+	                }
+		        		
+	        	}
+	        	output.print("\n");
+	        	System.out.println();
+	        }
+	    try {
+	    	 output.print("Données de la matrice 2 (B) \n");
+	 		
+		} catch (Exception e) {
+			// TODO: handle exception
+		}    
+			
+	        //Writing matrix 2
+	    
+	    System.out.println("Données de la matrice 2 (B) ");
+	        for(int i=0;i<Matrix2.length;i++) {
+	        	  
+	        	for(int j=0;j<Matrix2[i].length;j++)
+	        	{
+	        		try {
+	                    System.out.print(Matrix2[i][j]+" ");     
+	                    output.print(Matrix2[i][j]+"\t");
+	                   
+	                }
+	                catch(Exception e) {
+	                    e.getStackTrace();
+	                }
+		        		
+	        	}
+	        	output.print("\n");
+	        	System.out.println();
+	        	
+	        	
+	        }
+	        
+	       
+	        try {
+		    	 output.print("Résultats finaux \n");
+		 		
+			} catch (Exception e) {
+				// TODO: handle exception
+			}   
+	        
+	        
+	        System.out.println("Résultats finaux");
+	        
+	        
 	        int  p, q, c, d, k;
 	        int m, n;
 	         double sum = 0.0F; 
@@ -296,18 +370,32 @@ public class Gauss {
 	             }
 	     
 	             System.out.println("Product of the matrices:");
-	     
-	             for (c = 0; c < m; c++)
-	             {
-	                for (d = 0; d < q; d++)
-	                   System.out.print(multiply[c][d]+"\t");
-	     
-	                System.out.print("\n");
-	             }
-
 	             
-	        
-	        
+	             for(int i=0;i<inverted_matrix1.length;i++) {
+		        	  
+	 	        	for(int j=0;j<inverted_matrix1[i].length;j++)
+	 	        	{
+	 	        		try {
+	 	                     System.out.println(multiply[i][j]+" ");    
+	 	                    output.print(multiply[i][j]+"\t");
+	 	                }
+	 	                catch(Exception e) {
+	 	                    e.getStackTrace();
+	 	                }
+	 	        		
+	 		        		
+	 	        	}
+	 	        	try {
+						output.print("\n");
+					} catch (Exception e) {
+						// TODO: handle exception
+					}
+	 	        	System.out.println();
+	 	        	
+	 	        }
+	             
+	             output.close();
+	 	        	
 	    
 	}
 	}

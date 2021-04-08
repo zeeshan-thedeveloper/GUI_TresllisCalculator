@@ -24,8 +24,7 @@ public class GUIController implements Initializable{
 			@FXML 
 			ComboBox<Node_ForCombox_DataHolder> comboEndingNode;
 			Node_ForCombox_DataHolder selectedStrtingNode,selectedEndingNode;
-			
-			
+	
 			
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) 
@@ -137,7 +136,8 @@ public class GUIController implements Initializable{
 	@FXML
 	public void saveSolutionFile() {
 		// TODO Auto-generated method stub
-
+		Matrix.Printing_All_Data_on_File("InputData", Matrix.meta_Data_Holder);
+		
 	}
 	@FXML
 	public void openFile() {
@@ -150,7 +150,7 @@ public class GUIController implements Initializable{
 		Trellis trellis_Data1[] = new Trellis[2];
 		Terrain terrain_Data1[]= new Terrain[1];
 		Node node_Data1[]= new Node[node_list.getItems().size()];
-		Bar bar_Data1[]= new Bar[12];
+		Bar bar_Data1[]= new Bar[bar_list.getItems().size()];
 		Hand hand_Data1[]=new Hand[1];
 		
 		Points [] point_Data = new Points[3] ;
@@ -254,7 +254,9 @@ public class GUIController implements Initializable{
 	
 	double Matrix1[][];
 	double Matrix2[][]=null;
-	System.out.println("length is : "+Matrix.meta_Data_Holder.getNode_Data().length);
+//	System.out.println("length is : "+Matrix.meta_Data_Holder.getBar_Data()[0].getStarting_node().identificationN);
+
+//	System.out.println("length is : "+Matrix.meta_Data_Holder.getNode_Data().length);
  	Matrix1 = Gauss.Create_Matrix_Of_Equation(Matrix.meta_Data_Holder);
  	
  	if(Matrix.meta_Data_Holder.getNode_Data().length==3)
@@ -284,23 +286,9 @@ public class GUIController implements Initializable{
  	}
  	
  	
- 	System.out.println("L :M1 "+Matrix1.length+" - "+Matrix1[0].length);
- 	System.out.println("L :M2 "+Matrix2.length+" - "+Matrix2[0].length);
- 	
- 	System.out.println("Value of m1");
- 	for(int i=0;i<Matrix1.length;i++)
- 	{
- 		for(int j=0;j<Matrix1[i].length;j++)
- 		{
- 			System.out.print(Matrix1[i][j]+"  ");
- 			
- 		}
- 		
- 		System.out.println();
- 		
- 	}
  	
  	Gauss.finalAnswerCalculator(Matrix1, Matrix2);
+ 	
 	}
 		
 }
@@ -334,7 +322,7 @@ class Node_DataHolder
 		// TODO Auto-generated constructor stub
 		this.identificationN=identificationN;
 		this.txt_abscisse=txt_abscisse;
-		this.txt_ordonne=txt_abscisse;
+		this.txt_ordonne=txt_ordonne;
 		this.type_support=type_support;
 	}
 	public String getIdentificationN() {

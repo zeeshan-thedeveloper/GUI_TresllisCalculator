@@ -1,0 +1,8 @@
+ZoneConstructible;0.5;4.0;-5.0;1.0
+Triangle;01;(2.0,3.0);;(2.0,3.0);;(2.0,3.0);FINTRIAGLESTypeBarre;1;100.0;1.0;5.0;1000.0;2000.0FINCATALOGUEAppuiDouble;1;1;1;23.0;23.0
+AppuiDouble;1;1;1;23.0;23.0
+AppuiDouble;1;1;1;23.0;23.0
+FINNOEUDESBar;11;1
+lBar;11;1
+lBar;11;1
+lFINBERRES

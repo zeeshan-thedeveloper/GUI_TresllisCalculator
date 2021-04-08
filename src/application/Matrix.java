@@ -13,7 +13,7 @@ public static void main(String args[]) {
 }
 //**************************** Writing on a File ***********************************
 static void Printing_All_Data_on_File(String Name_Of_File,Meta_Data_Holder Accessing_Data) {
-
+String AllData="";
  
 // zone constructor string
 
@@ -34,23 +34,63 @@ Triangle_Data+=";("+Accessing_Data.point_Data[j].i+","+Accessing_Data.point_Data
 }
 
 // bar type string
-float cost=0, min_length=0,max_length=0,max_tensile_strength=0,resistence=0;
+float cost=100, min_length=1,max_length=5,max_tensile_strength=1000,resistence=2000;
 
-String BarType= "TypeBarre;"+cost+";"+min_length+";"+max_length+";"+max_tensile_strength+";"+resistence;
+
+
+String BarType= "TypeBarre;1;"+cost+";"+min_length+";"+max_length+";"+max_tensile_strength+";"+resistence;
+
 
 
 //Double Support
 int support_no=0;
 //String Double_Support="AppuiDouble;"+(support_no+1)+";"+1+";";
+String node_str="";
+for(Node node : Accessing_Data.getNode_Data())
+{
+	String ty = "";
+	if(node.typeSupport==0)
+	{
+		ty="AppuiSimple";
+		node_str+=ty+";"+node.identificationN+";"+"1"+";"+node.typeSupport+";"+node.abscissa+";"+node.ordinate+"\n";
+	}
+	else if(node.typeSupport==1)
+	{
+		ty="AppuiDouble";
+		node_str+=ty+";"+node.identificationN+";"+"1"+";"+node.typeSupport+";"+node.abscissa+";"+node.ordinate+"\n";
+	}
+	else
+	{
+		ty = "NoeudSimple";
+		node_str+=ty+";"+node.identificationN+";"+node.typeSupport+";("+node.abscissa+","+node.ordinate+")\n";
+	}
+	
+	
+}
 
 
+String bar_str="";
+//System.out.println("length is : "+Matrix.meta_Data_Holder.getBar_Data().length);
 
 
-try{
-FileWriter fwr=new FileWriter(Name_Of_File+".txt",false);
-   fwr.write("");
+for(Bar bar : Matrix.meta_Data_Holder.getBar_Data())
+{
+	bar_str+="Bar;"+"1"+";"+bar.getStarting_node().identificationN+";"+bar.getEnd_node().identificationN+"\n";
+}
+
+AllData+=Zone_contruct_Data+Triangle_Data+"FINTRIAGLES \n"+BarType+"\nFINCATALOGUE\n"+node_str+"FINNOEUDES \n"+bar_str+"FINBERRES";
+
+try
+{
+   FileWriter fwr=new FileWriter("C:\\Users\\HP\\Desktop\\AutoGenrateInputFile.txt",false);
+   fwr.write(AllData);
    fwr.close();
-}catch(Exception ex){}
+}
+catch(Exception ex)
+{
+	ex.getMessage();
+}
+
 }
 
 

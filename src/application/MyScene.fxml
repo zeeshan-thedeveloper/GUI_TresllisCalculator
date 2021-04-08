@@ -134,7 +134,7 @@
          </font>
       </Label>
       <Button layoutX="1119.0" layoutY="136.0" mnemonicParsing="false" onAction="#openFile" prefHeight="79.0" prefWidth="180.0" text="Fichier ouvert" />
-      <Button layoutX="1119.0" layoutY="300.0" mnemonicParsing="false" onAction="#saveSolutionFile" prefHeight="79.0" prefWidth="180.0" text="Enregistrer le fichier d'entrée" />
-      <Button layoutX="1119.0" layoutY="473.0" mnemonicParsing="false" onAction="#solve" prefHeight="79.0" prefWidth="180.0" text="Résoudre" />
+      <Button layoutX="1119.0" layoutY="322.0" mnemonicParsing="false" onAction="#saveSolutionFile" prefHeight="79.0" prefWidth="180.0" text="Enregistrer le fichier d'entrée" />
+      <Button layoutX="1119.0" layoutY="523.0" mnemonicParsing="false" onAction="#solve" prefHeight="79.0" prefWidth="180.0" text="Résoudre" />
    </children>
 </AnchorPane>
